@@ -1,4 +1,4 @@
-import { setPlayerHealth } from "@/table-state";
+import { setPlayerHealth } from "@/player-state";
 import { FC } from "react";
 
 type HealthBarProps = {

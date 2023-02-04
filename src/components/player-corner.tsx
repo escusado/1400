@@ -1,4 +1,4 @@
-import { playerHealth$ } from "@/table-state";
+import { playerHealth$ } from "@/player-state";
 import { useObservable } from "@ngneat/react-rxjs";
 
 import { FC } from "react";
