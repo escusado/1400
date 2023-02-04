@@ -28,6 +28,11 @@ export const playerHand$: Observable<PlayerProps["hand"]> = playerStore.pipe(
   select(({ hand }: PlayerProps) => hand),
 );
 
+export const playerHandSelected$: Observable<PlayerProps["hand"]> =
+  playerStore.pipe(
+    select(({ hand }: PlayerProps) => hand.filter((card) => card.selected)),
+  );
+
 //Mutations
 export const setPlayerHealth = (value: number) => {
   playerStore.update((state: PlayerProps) => ({ ...state, health: value }));
