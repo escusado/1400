@@ -1,7 +1,7 @@
-import { FC } from 'react'
-import EnemyCorner from './enemy-corner'
-import GameArena from './game-arena'
-import PlayerCorner from './player-corner'
+import { FC } from "react";
+import EnemyCorner from "./enemy-corner";
+import GameArena from "./game-arena";
+import PlayerCorner from "./player-corner";
 
 const MainStage: FC = () => {
   return (
@@ -10,7 +10,7 @@ const MainStage: FC = () => {
       <GameArena className="flex-1" />
       <PlayerCorner />
     </div>
-  )
-}
+  );
+};
 
-export default MainStage
+export default MainStage;

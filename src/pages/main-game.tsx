@@ -1,7 +1,7 @@
 import MainStage from "@/components/main-stage";
 import { FC } from "react";
 
-const MainGamePage: FC= () => {
+const MainGamePage: FC = () => {
   return <MainStage />;
 };
 
