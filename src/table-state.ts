@@ -75,36 +75,3 @@ export const playerHealth$: Observable<PlayerProps["health"]> =
 export const setPlayerHealth = (value: number) => {
   playerStore.update((state: PlayerProps) => ({ ...state, health: value }));
 };
-
-// export interface TableProps {
-//   player: Player
-//   arena: {
-//     playerHand: Card[]
-//     enemyHand: Card[]
-//   }
-// }
-
-// const tableStore = createStore(
-//   { name: 'todos' },
-//   withProps<TableProps>({
-//     player: {
-//       health: 10,
-//       hand: [
-//         { value: '1', suit: 'd' },
-//         { value: 'K', suit: 'c' },
-//       ],
-//     },
-//     arena: {
-//       playerHand: [],
-//       enemyHand: [],
-//     },
-//   }),
-// )
-
-// export const playerHand$ = tableStore.query(
-//   select((state: TableProps) => state.player.hand),
-// )
-
-// export const playerHealth$ = tableStore.query(
-//   select((state: TableProps) => state.player.health),
-// )
