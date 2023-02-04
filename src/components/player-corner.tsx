@@ -1,13 +1,11 @@
-
-
 import { FC } from "react";
 import HealthBar from "./health-bar";
 import PlayerHandLeft from "./player-hand-left";
-import { playerHealth$ } from "@/player-state";
+import { playerHand$, playerHealth$, setPlayerHand } from "@/player-state";
 import { useObservable } from "@ngneat/react-rxjs";
-import useKeyPress from '../hooks/useKeyPress'
-import { useEffect, useState } from 'react'
-import { getHand } from '../lib/pokerHelpers'
+import useKeyPress from "../hooks/useKeyPress";
+import { useEffect, useState } from "react";
+import { getHand } from "../lib/pokerHelpers";
 
 type PlayerCornerProps = {
   className?: string;
@@ -16,26 +14,21 @@ type PlayerCornerProps = {
 // pokerhandArray
 
 const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
-  const [hand, setHand] = useState<string[]>([])
-
+  const [hand] = useObservable(playerHand$);
 
   const [playerHealth] = useObservable(playerHealth$);
-  const isWPressed = useKeyPress('w')
-  const isAPressed = useKeyPress('a')
-  const isSPressed = useKeyPress('s')
-  const isDPressed = useKeyPress('d')
-
-
-  useEffect(() => {
-    console.log('pressed', { isWPressed, isAPressed, isSPressed, isDPressed })
-  }, [isWPressed, isAPressed, isSPressed, isDPressed])
-
+  const isWPressed = useKeyPress("w");
+  const isAPressed = useKeyPress("a");
+  const isSPressed = useKeyPress("s");
+  const isDPressed = useKeyPress("d");
 
   useEffect(() => {
-    setHand(getHand())
-  }, [])
+    console.log("pressed", { isWPressed, isAPressed, isSPressed, isDPressed });
+  }, [isWPressed, isAPressed, isSPressed, isDPressed]);
 
-
+  useEffect(() => {
+    setPlayerHand(getHand());
+  }, []);
 
   return (
     <div
@@ -43,7 +36,7 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
     >
       <div className="flex h-full w-full  items-center align-middle">
         <div className="ml-20">
-          <PlayerHandLeft hand={hand} />
+          <PlayerHandLeft hand={hand.map((card) => card.value)} />
           <HealthBar
             className="absolute top-2 right-2 w-48"
             total={10}

@@ -1,6 +1,6 @@
 import { createStore, withProps, select } from "@ngneat/elf";
 import { Observable } from "rxjs";
-import { CardValue } from "./components/car-values.enum";
+import { CardValue } from "./components/card-values.enum";
 
 interface Card {
   value: CardValue;
@@ -20,13 +20,30 @@ const playerStore = createStore(
   }),
 );
 
+//Observables
 export const playerHealth$: Observable<PlayerProps["health"]> =
   playerStore.pipe(select(({ health }: PlayerProps) => health));
 
+export const playerHand$: Observable<PlayerProps["hand"]> = playerStore.pipe(
+  select(({ hand }: PlayerProps) => hand),
+);
+
+//Mutations
 export const setPlayerHealth = (value: number) => {
   playerStore.update((state: PlayerProps) => ({ ...state, health: value }));
 };
 
-export const playerSelectCard = (index: number) => {
-  console.log(">>>", index);
+export const setPlayerCardSelected = (index: number, value: boolean) => {
+  playerStore.update((state: PlayerProps) => {
+    const newHand = { ...state.hand };
+    newHand[index].selected = value;
+    return {
+      ...state,
+      hand: newHand,
+    };
+  });
+};
+
+export const setPlayerHand = (hand: Card[]) => {
+  playerStore.update((state: PlayerProps) => ({ ...state, hand }));
 };

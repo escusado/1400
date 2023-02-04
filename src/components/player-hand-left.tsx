@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Card from "./game-elements/Card";
 import { useEffect, useState } from "react";
+import { CardValue } from "./card-values.enum";
 
 type PlayerHandLeftProps = {
-  className?: string,
-  hand: string[]
-}
-
+  className?: string;
+  hand: CardValue[];
+};
 
 const PlayerHandLeft: FC<PlayerHandLeftProps> = ({ className, hand }) => {
   return (
