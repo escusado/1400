@@ -1,12 +1,14 @@
 import { FC } from 'react'
+import classNames from 'classnames'
 
 type CardSlotProps = {
   className?: string
 }
 
 const CardSlot: FC<CardSlotProps> = ({ className }) => {
+  const css = classNames(className, 'radius-xl h-28 w-20 bg-red-200')
   return (
-    <div className={`radius-xl h-28 w-20 bg-red-200 ${className}`}>
+    <div className={css}>
       CardSlot
     </div>
   )
