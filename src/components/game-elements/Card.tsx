@@ -1,21 +1,23 @@
-
-import { FC } from 'react'
-import React from 'react'
+import { FC } from "react";
+import React from "react";
 
 type CardProps = {
-  className?: string,
-  flipped?: boolean,
-  cardContent?: React.ReactNode
-}
+  className?: string;
+  flipped?: boolean;
+  cardContent?: React.ReactNode;
+};
 
 const Card: FC<CardProps> = ({ flipped = true }) => {
   return (
-    <div className='aspect-[9/16] max-w-[150px] '>
+    <div className="aspect-[9/16] max-w-[150px] ">
       {/* check if flipped */}
-      {flipped ? <div className='bg-white h-full'></div> : <div className='bg-orange-100 h-full'></div>}
+      {flipped ? (
+        <div className="h-full bg-white"></div>
+      ) : (
+        <div className="h-full bg-orange-100"></div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-
-export default Card
+export default Card;

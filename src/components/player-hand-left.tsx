@@ -1,9 +1,9 @@
-import { FC } from 'react'
-import CardSlot from './card-slot'
+import { FC } from "react";
+import CardSlot from "./card-slot";
 
 type PlayerHandLeftProps = {
-  className?: string
-}
+  className?: string;
+};
 
 const PlayerHandLeft: FC<PlayerHandLeftProps> = ({ className }) => {
   return (
@@ -23,7 +23,7 @@ const PlayerHandLeft: FC<PlayerHandLeftProps> = ({ className }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PlayerHandLeft
+export default PlayerHandLeft;

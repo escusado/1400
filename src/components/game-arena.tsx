@@ -1,11 +1,11 @@
-import { FC } from 'react'
+import { FC } from "react";
 
 type GameArenaProps = {
-  className?: string
-}
+  className?: string;
+};
 
 const GameArena: FC<GameArenaProps> = ({ className }) => {
-  return <div className={`bg-green-400 ${className}`}>GameArensa</div>
-}
+  return <div className={`bg-green-400 ${className}`}>GameArensa</div>;
+};
 
-export default GameArena
+export default GameArena;
