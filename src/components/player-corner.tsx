@@ -7,17 +7,17 @@ import { playerHealth$ } from "@/player-state";
 import { useObservable } from "@ngneat/react-rxjs";
 import useKeyPress from '../hooks/useKeyPress'
 import { useEffect, useState } from 'react'
-import { getHand } from '../lib/pokerHelpers'
+import { getHand, keysToIdexes } from '../lib/pokerHelpers'
+
 
 type PlayerCornerProps = {
   className?: string;
 };
 
-// pokerhandArray
 
 const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
   const [hand, setHand] = useState<string[]>([])
-
+  const [selectedHand, setSelectedHand] = useState<string[]>([])
 
   const [playerHealth] = useObservable(playerHealth$);
   const isWPressed = useKeyPress('w')
@@ -27,7 +27,11 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
 
 
   useEffect(() => {
-    console.log('pressed', { isWPressed, isAPressed, isSPressed, isDPressed })
+    let index = 0
+    if (isWPressed) {
+      index = 0
+    }
+
   }, [isWPressed, isAPressed, isSPressed, isDPressed])
 
 
@@ -35,15 +39,13 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
     setHand(getHand())
   }, [])
 
-
-
   return (
     <div
       className={`h-2/5 w-full bg-[url('/placeholders/hero_bg.png')] bg-cover   ${className}`}
     >
       <div className="flex h-full w-full  items-center align-middle">
         <div className="ml-20">
-          <PlayerHandLeft hand={hand} />
+          <PlayerHandLeft hand={hand} selectedHand={selectedHand} />
           <HealthBar
             className="absolute top-2 right-2 w-48"
             total={10}

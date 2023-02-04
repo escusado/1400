@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 type PlayerHandLeftProps = {
   className?: string,
-  hand: string[]
+  hand: string[],
+  selectedHand: string[]
 }
 
 

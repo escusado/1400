@@ -54,6 +54,14 @@ export const pokerDeck = [
 ];
 
 
+export const keysToIdexes = {
+  'w': 0,
+  'd': 1,
+  's': 2,
+  'a': 3,
+}
+
+
 export function shuffle(array: any) {
   let currentIndex = array.length,
     temporaryValue,
