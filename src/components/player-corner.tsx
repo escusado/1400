@@ -1,16 +1,22 @@
 import { FC } from 'react'
 import PlayerHandLeft from './player-hand-left'
+import useKeyPress from '../hooks/useKeyPress'
+import { useEffect } from 'react'
 
 type PlayerCornerProps = {
   className?: string
 }
 
-// pokerhandArray 
-
-
-
 const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
+  const isWPressed = useKeyPress('w')
+  const isAPressed = useKeyPress('a')
+  const isSPressed = useKeyPress('s')
+  const isDPressed = useKeyPress('d')
 
+
+  useEffect(() => {
+    console.log('pressed', { isWPressed, isAPressed, isSPressed, isDPressed })
+  }, [isWPressed, isAPressed, isSPressed, isDPressed])
 
 
   return (

@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 
 
 type PlayerHandLeftProps = {
-  className?: string
+  className?: string,
+  handArray?: string[]
 }
 
 // pokerhandArray 
@@ -18,7 +19,6 @@ const pokerDeck = [
 
 const PlayerHandLeft: FC<PlayerHandLeftProps> = ({ className }) => {
   const [hand, setHand] = useState([])
-
 
   function shuffle(array: any) {
     let currentIndex = array.length, temporaryValue, randomIndex;
