@@ -5,7 +5,7 @@ type GameArenaProps = {
 }
 
 const GameArena: FC<GameArenaProps> = ({ className }) => {
-  return <div className={className}>GameArena</div>
+  return <div className={`bg-green-400 ${className}`}>GameArensa</div>
 }
 
 export default GameArena

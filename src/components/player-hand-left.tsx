@@ -7,8 +7,8 @@ type PlayerHandLeftProps = {
 
 const PlayerHandLeft: FC<PlayerHandLeftProps> = ({ className }) => {
   return (
-    <div className={`relative flex h-64 w-72 ${className}`}>
-      <div className="m-auto mt-10 h-52 w-52 rounded-full bg-green-200" />
+    <div className={`relative flex h-56 w-72 ${className}`}>
+      <div className="m-auto mt-10 h-5/6 w-5/6 rounded-full bg-green-200" />
       <div className="absolute top-0 h-full w-full">
         <div>
           <CardSlot className="m-auto" />
