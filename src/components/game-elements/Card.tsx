@@ -2,15 +2,16 @@ import { FC } from "react";
 import React from "react";
 
 import classNames from "classnames";
+import { CardValue } from "../card-values.enum";
 
 // import select car from store
 
-function selectCard(value: string) {
+function selectCard(value: CardValue) {
   console.log("select card", value);
 }
 
 type CardProps = {
-  value: string;
+  value: CardValue;
   className?: string;
   isInteractive: boolean;
   flipped?: boolean;
