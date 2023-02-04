@@ -1,27 +1,34 @@
-import { FC } from 'react'
-import PlayerHandLeft from './player-hand-left'
+import { playerHealth$ } from "@/player-state";
+import { useObservable } from "@ngneat/react-rxjs";
+
+import { FC } from "react";
+import HealthBar from "./health-bar";
+import PlayerHandLeft from "./player-hand-left";
 
 type PlayerCornerProps = {
-  className?: string
-}
+  className?: string;
+};
 
-// pokerhandArray 
-
-
+// pokerhandArray
 
 const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
-
-
-
+  const [playerHealth] = useObservable(playerHealth$);
   return (
-    <div className={`w-full bg-[url('/placeholders/hero_bg.png')] bg-cover h-2/5   ${className}`}>
-      <div className='flex items-center align-middle  h-full w-full'>
-        <div className='ml-20'>
+    <div
+      className={`h-2/5 w-full bg-[url('/placeholders/hero_bg.png')] bg-cover   ${className}`}
+    >
+      <div className="flex h-full w-full  items-center align-middle">
+        <div className="ml-20">
           <PlayerHandLeft />
+          <HealthBar
+            className="absolute top-2 right-2 w-48"
+            total={10}
+            current={playerHealth}
+          />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PlayerCorner
+export default PlayerCorner;
