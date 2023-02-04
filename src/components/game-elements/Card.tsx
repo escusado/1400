@@ -20,10 +20,10 @@ type CardProps = {
 }
 
 const Card: FC<CardProps> = ({ className, value, isInteractive }) => {
-  const css = classNames('aspect-[9/16] max-w-[150px]', className)
+  const css = classNames('aspect-[9/16] max-w-[150px]', className, isInteractive && 'hover:transition-transform hover:-translate-y-5')
   return (
     <div className={css} onClick={() => isInteractive && selectCard(value)}>
-      <div className='bg-white h-full hover:shadow-lg cursor-pointer hover:transition-transform hover:-translate-y-5 text-gray-800'>{value}</div>
+      <div className='bg-white h-full hover:shadow-lg cursor-pointer  text-gray-800'>{value}</div>
     </div>
   )
 }
