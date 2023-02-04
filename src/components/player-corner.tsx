@@ -9,18 +9,24 @@ type PlayerCornerProps = {
   className?: string;
 };
 
+// pokerhandArray
+
 const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
   const [playerHealth] = useObservable(playerHealth$);
   return (
     <div
-      className={`relative w-full overflow-hidden bg-sky-900 p-8 ${className}`}
+      className={`h-2/5 w-full bg-[url('/placeholders/hero_bg.png')] bg-cover   ${className}`}
     >
-      <PlayerHandLeft className="absolute top-0" />
-      <HealthBar
-        className="absolute top-2 right-2 w-48"
-        total={10}
-        current={playerHealth}
-      />
+      <div className="flex h-full w-full  items-center align-middle">
+        <div className="ml-20">
+          <PlayerHandLeft />
+          <HealthBar
+            className="absolute top-2 right-2 w-48"
+            total={10}
+            current={playerHealth}
+          />
+        </div>
+      </div>
     </div>
   );
 };
