@@ -1,3 +1,6 @@
+import { Card } from '@/player-state';
+import poker from 'poker-hands';
+
 export const pokerDeck = [
   "2H",
   "3H",
@@ -91,4 +94,57 @@ export function getHand() {
     };
   })
   return selectedHand;
+}
+
+export function bestGameFromHand(hand: Card[]) {
+  const handValues = hand.map((card) => card.value);
+  const handString = handValues.join(' ');
+  const indices = [];
+
+  let winnerHand = [];
+
+  switch(handString) {
+    // TODO: CASES FOR MORE THAN 4 CARDS
+    // case poker.hasRoyalFlush(handString):
+    //   return 'Royal Flush';
+    // case poker.hasStraightFlush(handString):
+    //   return 'Straight Flush';
+    case poker.hasFourOfAKind(handString):
+      const fourOfAKind = poker.hasFourOfAKind(handString);
+      winnerHand = handValues.filter((c) => c.includes(fourOfAKind));
+      return winnerHand;
+    case poker.hasFullHouse(handString):
+      const fullHouse = poker.hasFullHouse(handString);
+      winnerHand = handValues.filter((c) => c.includes(fullHouse));
+      return winnerHand;
+    case poker.hasFlush(handString):
+      const flush = poker.hasFlush(handString);
+      winnerHand = handValues.filter((c) => c.includes(flush));
+      return winnerHand;
+      
+    case poker.hasStraight(handString):
+      const straight = poker.hasStraight(handString);
+      winnerHand = handValues.filter((c) => c.includes(straight));
+      return winnerHand;
+    case poker.hasThreeOfAKind(handString):
+      const threeOfAKind = poker.hasThreeOfAKind(handString);
+      winnerHand = handValues.filter((c) => c.includes(threeOfAKind));
+      return winnerHand;
+
+    case poker.hasTwoPair(handString):
+      const twoPair = poker.hasTwoPair(handString);
+      const w1 = handValues.filter((c) => c.includes(twoPair[0]));
+      const w2 = handValues.filter((c) => c.includes(twoPair[1]));
+      winnerHand = [...w1, ...w2];
+      return winnerHand;
+    case poker.hasPair(handString):
+      const pair = poker.hasPair(handString);
+      winnerHand = handValues.filter((c) => c.includes(pair));
+      return winnerHand;
+    default:
+      const highCard = poker.highestCard(handString);
+      winnerHand = handValues.filter((c) => c.includes(highCard));
+      return winnerHand;
+  }
+  
 }

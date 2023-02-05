@@ -7,18 +7,26 @@ export interface Card {
   selected: boolean;
 }
 
-interface PlayerProps {
+export interface PlayerProps {
   hand: Card[];
   health: number;
 }
 
 const playerStore = createStore(
-  { name: "todos" },
+  { name: "player" },
   withProps<PlayerProps>({
     health: 1,
     hand: [],
   }),
 );
+
+const enemyStore = createStore(
+  { name: "enemy" },
+  withProps<PlayerProps>({
+    health: 1,
+    hand: [],
+  }),
+)
 
 //Observables
 export const playerHealth$: Observable<PlayerProps["health"]> =
@@ -52,3 +60,23 @@ export const setPlayerCardSelected = (index: number, value: boolean) => {
 export const setPlayerHand = (hand: Card[]) => {
   playerStore.update((state: PlayerProps) => ({ ...state, hand }));
 };
+
+
+// enemy mutations
+export const setEnemyHealth = (value: number) => {
+  enemyStore.update((state: PlayerProps) => ({ ...state, health: value }));
+}
+
+export const setEnemyHand = (hand: Card[]) => {
+  enemyStore.update((state: PlayerProps) => ({ ...state, hand }));
+}
+
+// enemy observables
+
+export const enemyHealth$: Observable<PlayerProps["health"]> =
+  enemyStore.pipe(select(({ health }: PlayerProps) => health));
+
+export const enemyHand$: Observable<PlayerProps["hand"]> = enemyStore.pipe(
+  select(({ hand }: PlayerProps) => hand),
+);
+

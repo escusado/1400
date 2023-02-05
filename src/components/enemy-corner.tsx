@@ -3,6 +3,8 @@ import { FC } from "react";
 import Card from "./game-elements/Card";
 import { useEffect, useState } from "react";
 import { getHand } from "../lib/pokerHelpers";
+import { setEnemyHand, enemyHand$ } from "@/player-state"
+import { useObservable } from "@ngneat/react-rxjs";
 
 
 type EnemyCornerProps = {
@@ -12,10 +14,10 @@ type EnemyCornerProps = {
 
 
 const EnemyCorner: FC<EnemyCornerProps> = ({ className }) => {
-  const [hand, setHand] = useState<CardType[]>([]);
+  const [hand] = useObservable(enemyHand$);
 
   useEffect(() => {
-    setHand(getHand());
+    setEnemyHand(getHand());
   }, []);
   return (
     <div className="relative h-1/3 bg-black text-white">
