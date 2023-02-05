@@ -1,10 +1,12 @@
+import { Card as CardType } from "@/player-state";
 import { FC } from "react";
 import Card from "./game-elements/Card";
 import { CardValue } from "./card-values.enum";
 
+
 type PlayerHandLeftProps = {
   className?: string;
-  hand: CardValue[];
+  hand: CardType[];
   selectedHand?: string[];
 };
 

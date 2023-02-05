@@ -5,6 +5,7 @@ import { playerHand$, playerHealth$, setPlayerHand, setPlayerCardSelected } from
 import { useObservable } from "@ngneat/react-rxjs";
 import { useEffect, useState } from "react";
 import { getHand, keysToIdexes } from "../lib/pokerHelpers";
+import { ValueOf } from "next/dist/shared/lib/constants";
 
 type PlayerCornerProps = {
   className?: string;
@@ -18,8 +19,10 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
 
   useEffect(() => {
     const downHandler = ({ key }: KeyboardEvent) => {
+      // @ts-ignore
       if (keysToIdexes[key] !== undefined) {
-        setPlayerCardSelected(keysToIdexes[key], !hand[keysToIdexes[key]].selected)
+        // @ts-ignore
+        setPlayerCardSelected(keysToIdexes[key] as number, !hand[keysToIdexes[key]].selected)
       }
       if (key === ' ') {
         console.log('hit me')
