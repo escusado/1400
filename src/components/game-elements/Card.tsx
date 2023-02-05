@@ -28,7 +28,7 @@ const Card: FC<CardProps> = ({ className, value, isInteractive, selected }) => {
   );
   return (
     <div className={css} onClick={() => isInteractive && selectCard(value)}>
-      <div className="h-full cursor-pointer bg-white text-gray-800  hover:shadow-lg">
+      <div className={classNames("h-full cursor-pointer bg-white text-gray-800 hover:shadow-lg", selected && "bg-green-300")}>
         {value}
       </div>
     </div>

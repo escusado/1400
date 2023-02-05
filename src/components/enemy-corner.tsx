@@ -30,10 +30,10 @@ const EnemyCorner: FC<EnemyCornerProps> = ({ className }) => {
           <div className="absolute bottom-0 h-[98%] w-3/5 border-2 border-dotted border-white ">
             {/* cards here */}
             <div className="absolute bottom-0 flex h-[60%] w-full space-x-5">
-              <Card isInteractive={false} value={hand[0]} />
-              <Card isInteractive={false} value={hand[1]} />
-              <Card isInteractive={false} value={hand[2]} />
-              <Card isInteractive={false} value={hand[3]} />
+              {hand.map((card, index) => (
+                <Card isInteractive={false} value={card.value} />
+              ))}
+
             </div>
           </div>
         </div>
