@@ -29,7 +29,8 @@ const Card: FC<CardProps> = ({ className, value, isInteractive, selected, flippe
   return (
     <div className={css} onClick={() => isInteractive && selectCard(value)}>
       <div className={classNames("h-full cursor-pointer bg-white  text-gray-800 hover:shadow-lg")}>
-        <img className="object-cover h-full w-full" src="/placeholders/ace.png" />
+        {/* <img className="object-cover h-full w-full" src="/placeholders/ace.png" /> */}
+        <p>{value}</p>
       </div>
     </div>
   );

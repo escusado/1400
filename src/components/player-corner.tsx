@@ -22,7 +22,7 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
         setPlayerCardSelected(keysToIdexes[key], !hand[keysToIdexes[key]].selected)
       }
       if (key === ' ') {
-        alert('hit me')
+        console.log('hit me')
       }
     };
     window.addEventListener("keydown", downHandler);
