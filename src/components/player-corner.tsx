@@ -16,10 +16,6 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
 
 
 
-  const [playerHealth] = useObservable(playerHealth$);
-
-
-
   useEffect(() => {
     const downHandler = ({ key }: KeyboardEvent) => {
       if (keysToIdexes[key] !== undefined) {
@@ -49,11 +45,11 @@ const PlayerCorner: FC<PlayerCornerProps> = ({ className }) => {
 
           <PlayerHandLeft hand={hand} />
 
-          <HealthBar
+          {/* <HealthBar
             className="absolute top-2 right-2 w-48"
             total={10}
             current={playerHealth}
-          />
+          /> */}
         </div>
       </div>
     </div >
