@@ -2,7 +2,7 @@ import { createStore, withProps, select } from "@ngneat/elf";
 import { Observable } from "rxjs";
 import { CardValue } from "./components/card-values.enum";
 
-interface Card {
+export interface Card {
   value: CardValue;
   selected: boolean;
 }
@@ -16,7 +16,7 @@ const playerStore = createStore(
   { name: "todos" },
   withProps<PlayerProps>({
     health: 1,
-    hand: [{ value: CardValue["2C"], selected: false }],
+    hand: [],
   }),
 );
 
@@ -40,7 +40,7 @@ export const setPlayerHealth = (value: number) => {
 
 export const setPlayerCardSelected = (index: number, value: boolean) => {
   playerStore.update((state: PlayerProps) => {
-    const newHand = { ...state.hand };
+    const newHand = [...state.hand ];
     newHand[index].selected = value;
     return {
       ...state,

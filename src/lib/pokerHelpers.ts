@@ -54,6 +54,17 @@ export const pokerDeck = [
 ];
 
 
+// keys to indexes interface
+
+
+export const keysToIdexes = {
+  'w': 0,
+  'd': 1,
+  's': 2,
+  'a': 3,
+}
+
+
 export function shuffle(array: any) {
   let currentIndex = array.length,
     temporaryValue,
@@ -73,5 +84,11 @@ export function shuffle(array: any) {
 export function getHand() {
   const shuffledDeck = shuffle(pokerDeck);
   const hand = shuffledDeck.slice(0, 4);
-  return hand;
+  const selectedHand = hand.map((card: string) => {
+    return {
+      value: card,
+      selected: false,
+    };
+  })
+  return selectedHand;
 }
