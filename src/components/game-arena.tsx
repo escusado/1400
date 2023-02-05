@@ -1,8 +1,13 @@
 import Metronome from "@/metronome";
 import { FC, useEffect, useState } from "react";
 import { useObservable } from "@ngneat/react-rxjs";
-import { playerHand$, playerHealth$, setPlayerHand, setPlayerCardSelected } from "@/player-state";
-import Card from "./game-elements/Card";
+import {
+  playerHand$,
+  playerHealth$,
+  setPlayerHand,
+  setPlayerCardSelected,
+} from "@/player-state";
+import Card from "./game-elements/card";
 import HealthBar from "./health-bar";
 
 enum BeatScore {
@@ -61,17 +66,18 @@ const GameArena: FC<GameArenaProps> = ({ className }) => {
   };
 
   return (
-
-    <div className={`bg-yellow-100 grid grid-cols-2 gap-2 h-1/3`}>
-      <div className="relative flex gap-2 bg-red-200 items-center justify-center align-middle">
+    <div className={`grid h-1/3 grid-cols-2 gap-2 bg-yellow-100`}>
+      <div className="relative flex items-center justify-center gap-2 bg-red-200 align-middle">
         {/* show selected cards  */}
-        {
-          hand.filter(card => card.selected).map((card, index) => {
-            return <div className="bg-green-100" key={index}>
-              <Card flipped={false} isInteractive={true} value={card.value} />
-            </div>
-          })
-        }
+        {hand
+          .filter((card) => card.selected)
+          .map((card, index) => {
+            return (
+              <div className="bg-green-100" key={index}>
+                <Card flipped={false} isInteractive={true} value={card.value} />
+              </div>
+            );
+          })}
         <HealthBar
           className="absolute bottom-0 left-0 w-[300px]"
           total={10}
@@ -82,11 +88,11 @@ const GameArena: FC<GameArenaProps> = ({ className }) => {
         <div onClick={stageStart} className="w-48 rounded-sm bg-green-200 p-2">
           Start
         </div>
-        <div className={`w-48 rounded-xl p-2 ${ScoreColors[score]}`}>{score}</div>
+        <div className={`w-48 rounded-xl p-2 ${ScoreColors[score]}`}>
+          {score}
+        </div>
       </div>
-
     </div>
-
   );
 };
 
