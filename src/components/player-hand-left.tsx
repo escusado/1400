@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Card from "./game-elements/-Card";
+import Card from "./game-elements/card";
 import { useEffect, useState } from "react";
 import { CardValue } from "./card-values.enum";
 
