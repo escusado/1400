@@ -6,7 +6,6 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:react/recommended",
-    "airbnb",
     "prettier"
   ],
   "parserOptions": {
