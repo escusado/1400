@@ -66,9 +66,17 @@ class Metronome {
   }
 
   getTimeToNextBeat() {
-    return this.audioContext
-      ? this.nextNoteTime - this.audioContext.currentTime
-      : 0;
+    if (this.currentBeatInBar === 0 && this.audioContext) {
+      return -(this.nextNoteTime - this.audioContext.currentTime);
+    }
+
+    if (this.currentBeatInBar === 1 && this.audioContext) {
+      return (
+        60.0 / this.tempo - (this.nextNoteTime - this.audioContext.currentTime)
+      );
+    }
+
+    return 999;
   }
 
   scheduler() {
