@@ -1,7 +1,9 @@
+import { Card as CardType } from "@/player-state";
 import { FC } from "react";
-import Card from "./game-elements/Card";
+// import Card from "./game-elements/Card";
 import { useEffect, useState } from "react";
 import { getHand } from "../lib/pokerHelpers";
+
 
 type EnemyCornerProps = {
   className?: string;
@@ -10,7 +12,7 @@ type EnemyCornerProps = {
 
 
 const EnemyCorner: FC<EnemyCornerProps> = ({ className }) => {
-  const [hand, setHand] = useState([]);
+  const [hand, setHand] = useState<CardType[]>([]);
 
   useEffect(() => {
     setHand(getHand());

@@ -2,7 +2,7 @@ import { createStore, withProps, select } from "@ngneat/elf";
 import { Observable } from "rxjs";
 import { CardValue } from "./components/card-values.enum";
 
-interface Card {
+export interface Card {
   value: CardValue;
   selected: boolean;
 }
